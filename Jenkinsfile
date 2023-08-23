@@ -13,7 +13,7 @@ pipeline {
         stage('Build and Deploy') {
             steps {
                 script {
-                    sh "docker build -t backend"
+                    sh "docker build . -t backend"
                     sh "docker-compose down"
                     sh "docker-compose up -d"
                 }
