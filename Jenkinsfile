@@ -14,9 +14,15 @@ pipeline {
             steps {
                 script {
                     sh "docker build . -t backend"
-                    sh "docker stop backend"
-                    sh "docker rm backend"
-                    sh "docker run -d -p 3000:3000 --name backend  backend"
+
+                    def existingContainers = sh(script: "docker ps -a --format '{{.Names}}'", returnStdout: true).trim()
+
+                    if (existingContainers.contains('backend')) {
+                        sh "docker stop backend"
+                        sh "docker rm backend"
+                    }
+
+                    sh "docker run -d -p 3000:3000 --name backend backend"
                 }
             }
         }
