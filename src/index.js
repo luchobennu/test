@@ -8,7 +8,7 @@ app.use(express.json());
 
 // Ruta de ejemplo
 app.get('/', (req, res) => {
-  res.send('¡Hola, esta es tu API Express editado!');
+  res.send('¡Hola !!!!');
 });
 
 // Manejo de errores

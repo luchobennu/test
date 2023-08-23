@@ -14,8 +14,9 @@ pipeline {
             steps {
                 script {
                     sh "docker build . -t backend"
-                    sh "docker-compose down"
-                    sh "docker-compose up -d"
+                    sh "docker stop backend"
+                    sh "docker rm backend"
+                    sh "docker run -d -p 3000:3000 --name backend  backend"
                 }
             }
         }
