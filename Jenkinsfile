@@ -20,11 +20,4 @@ pipeline {
             }
         }
     }
-    
-    post {
-        always {
-            // Detener los contenedores y limpiar después de la ejecución
-            sh "docker-compose down"
-        }
-    }
 }
